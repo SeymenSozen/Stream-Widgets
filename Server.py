@@ -23,8 +23,8 @@ Last_Donate_Id = None
 Per_Mounth = False
 ###Flask Bağış Bar Ayarları
 ## Donate Bar Hedef Ayarları
-Hedef_Turar = 10000
-Hedef_Metin = "Capture Card"
+Hedef_Turar = 50000
+Hedef_Metin = "İşlemci Sıvı Soğutma"
 ## Doante Alert Ayarları
 Alret_Gif = "https://c.tenor.com/0oH_oZ43RxEAAAAd/tenor.gif"
 Alett_Sound = "https://www.myinstants.com/media/sounds/sukaka-blyat.mp3"
