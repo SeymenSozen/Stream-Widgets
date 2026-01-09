@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="refresh" content="60"> <title>Top 5 Bağışçı</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: transparent;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            color: white;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .leaderboard-card {
+            background: rgba(0, 0, 0, 0.85);
+            border-radius: 20px;
+            padding: 25px;
+            width: 450px;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+        }
+
+        .title {
+            text-align: center;
+            font-size: 24px;
+            font-weight: 900;
+            margin-bottom: 20px;
+            color: rgb(3, 187, 187);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+            padding-bottom: 10px;
+        }
+
+        .donor-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 15px;
+            margin-bottom: 8px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            transition: transform 0.3s;
+        }
+
+        /* İlk sıradaki (Lider) özel tasarımı */
+        .donor-row:first-child {
+            background: rgba(3, 187, 187, 0.2);
+            border: 1px solid rgb(3, 187, 187);
+            transform: scale(1.05);
+        }
+
+        .rank {
+            font-weight: 900;
+            width: 30px;
+            color: rgba(255,255,255,0.5);
+        }
+
+        .donor-row:first-child .rank { color: #f1c40f; } /* 1. Altın rengi */
+
+        .name {
+            flex-grow: 1;
+            font-size: 18px;
+            font-weight: 600;
+            margin-left: 10px;
+        }
+        .amount {
+            font-weight: 800;
+            color: #2ecc71;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div class="leaderboard-card">
+        <div class="title">🏆 En Yüksek Bağışlar</div>  
+        <div class="list-container">
+            {% for isim, tutar in liderler %}
+            <div class="donor-row">
+                <span class="rank">{{ loop.index }}.</span>
+                <span class="name">{{ isim }}</span>
+                <span class="amount">{{ "%.2f"|format(tutar) }} TL</span>
+            </div>
+            {% endfor %}
+            {% if not liderler %}
+            <p class="text-center text-muted">Henüz bağış bulunmuyor.</p>
+            {% endif %}
+        </div>
+    </div>
+
+</body>
+</html>

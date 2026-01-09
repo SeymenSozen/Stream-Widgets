@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="refresh" content="10">
+    <title>Donate Alert</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: transparent;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+        }
+        .alert-wrapper {
+            text-align: center;
+            width: 600px;
+        }
+        .gif-box img {
+            width: 350px;
+            border-radius: 15px;
+            margin-bottom: -40px; /* Yazıyla birleşmesi için */
+            position: relative;
+            z-index: 2;
+        }
+        .info-box {
+            background: rgba(0, 0, 0, 0.85);
+            padding: 50px 30px 30px 30px;
+            border-radius: 20px;
+            border-bottom: 5px solid rgb(3, 187, 187);
+            color: white;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .donor-name {
+            font-size: 40px;
+            font-weight: 900;
+            color: rgb(3, 187, 187);
+            text-transform: uppercase;
+        }
+
+        .donor-amount {
+            font-size: 28px;
+            font-weight: bold;
+            color: #2ecc71;
+        }
+
+        .donor-message {
+            font-size: 22px;
+            margin-top: 15px;
+            font-style: italic;
+            color: #f1f1f1;
+            word-wrap: break-word;
+        }
+    </style>
+</head>
+<body>
+
+    {% if isim %}
+    <div class="alert-wrapper animate__animated animate__zoomIn">
+        <div class="gif-box">
+            <img src="{{ gif }}" alt="Alert GIF">
+        </div>
+        
+        <div class="info-box">
+            <div class="donor-name">{{ isim }}</div>
+            <div class="donor-amount">{{ tutar }} TL</div>
+            <div class="donor-message">"{{ mesaj }}"</div>
+        </div>
+
+        <audio autoplay>
+            <source src="{{ ses }}" type="audio/mpeg">
+        </audio>
+    </div>
+
+    <script>
+        setTimeout(() => {
+            document.querySelector('.alert-wrapper').classList.replace('animate__zoomIn', 'animate__zoomOut');
+        }, {{ sure * 1000 }}); // Saniyeyi milisaniyeye çevirdik
+    </script>
+    {% endif %}
+
+</body>
+</html>
